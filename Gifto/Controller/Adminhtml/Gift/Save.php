@@ -92,13 +92,13 @@ class Save extends Action
             } else {
                 $data['id'] = null;
             }
-            $arrayProducts = $this->getRequest()->getParam('mainProduct');
+            $arrayProducts = $this->getRequest()->getParam('mainProducts');
             $searchCriteria = $this->searchCriteriaBuilder->addFilter('entity_id',$arrayProducts,'in')->create();
             $mainProducts = $this->productRepository->getList($searchCriteria)->getItems();
             $labelsMainProducts = array_map (function ($item) {
                 return $item->getName();
             }, $mainProducts);
-            $arrayGiftProduct = $this->getRequest()->getParam('giftProduct');
+            $arrayGiftProduct = $this->getRequest()->getParam('giftProducts');
             $searchCriteriaGift = $this->searchCriteriaBuilder->addFilter('entity_id',$arrayGiftProduct,'in')->create();
             $giftProducts = $this->productRepository->getList($searchCriteriaGift)->getItems();
             $labelsGiftProducts = [];
